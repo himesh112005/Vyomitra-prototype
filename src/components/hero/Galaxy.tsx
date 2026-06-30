@@ -95,7 +95,7 @@ export default function Galaxy() {
 
   useFrame((state, delta) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.015; // Slow majestic rotation
+      groupRef.current.rotation.y += delta * 0.0075; // Slow majestic rotation
       groupRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.1) * 0.05; // Very slight wobble
     }
   });

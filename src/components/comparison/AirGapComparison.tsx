@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import { motion } from 'framer-motion'
 import SectionWrapper from '../ui/SectionWrapper'
 
@@ -81,7 +81,7 @@ export default function AirGapComparison() {
           </motion.div>
 
           {/* Center shield */}
-          <div className="flex flex-col items-center gap-4 px-4">
+          <div className="flex flex-col items-center gap-4 px-4 py-8 lg:py-0">
             <motion.div
               animate={{ scale: [1, 1.08, 1], boxShadow: ['0 0 20px rgba(34,211,238,0.2)', '0 0 40px rgba(34,211,238,0.5)', '0 0 20px rgba(34,211,238,0.2)'] }}
               transition={{ duration: 2.5, repeat: Infinity }}

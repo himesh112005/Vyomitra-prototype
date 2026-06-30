@@ -28,7 +28,7 @@ export default function AsteroidBelt() {
       const rotY = Math.random() * Math.PI * 2
       const rotZ = Math.random() * Math.PI * 2
 
-      const orbitSpeed = 0.002 + Math.random() * 0.018   // 0.002 to 0.02
+      const orbitSpeed = 0.001 + Math.random() * 0.009   // 0.001 to 0.01
       const orbitAngle = Math.random() * Math.PI * 2      // initial angle
 
       // gentle drift — tiny per-frame velocity
@@ -85,9 +85,9 @@ export default function AsteroidBelt() {
 
       // Advance self-rotation
       const ri = i * 3
-      selfRotations[ri]     += 0.003 * delta * 60
-      selfRotations[ri + 1] += 0.004 * delta * 60
-      selfRotations[ri + 2] += 0.002 * delta * 60
+      selfRotations[ri]     += 0.0015 * delta * 60
+      selfRotations[ri + 1] += 0.002 * delta * 60
+      selfRotations[ri + 2] += 0.001 * delta * 60
 
       // Compute world position = base position orbited around Y-axis + gentle drift
       const angle = orbitAngles[i]

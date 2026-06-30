@@ -9,6 +9,7 @@ import MassivePlanet from './MassivePlanet'
 import AsteroidBelt from './AsteroidBelt'
 import NetworkGlobe from './NetworkGlobe'
 import Galaxy from './Galaxy'
+import OrbitalStation from './OrbitalStation'
 
 function StarfieldWithParallax({ count }: { count: number }) {
   const { camera } = useThree()
@@ -50,6 +51,7 @@ function SceneContent({ isLowEnd }: { isLowEnd: boolean }) {
       <MassivePlanet />
       <AsteroidBelt />
       <NetworkGlobe />
+      <OrbitalStation />
       <OrbitControls
         enableZoom={false}
         enablePan={false}

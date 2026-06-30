@@ -7,7 +7,7 @@ export default function MassivePlanet() {
 
   useFrame((_state, delta) => {
     if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.03
+      groupRef.current.rotation.y += delta * 0.015
     }
   })
 

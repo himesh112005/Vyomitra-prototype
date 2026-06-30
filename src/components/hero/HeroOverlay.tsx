@@ -37,7 +37,7 @@ export default function HeroOverlay() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-        className="text-center text-7xl md:text-9xl font-black tracking-tight mb-4 relative z-10"
+        className="text-center text-5xl sm:text-7xl md:text-9xl font-black tracking-tight mb-4 relative z-10"
         style={{ fontFamily: 'Orbitron, sans-serif' }}
       >
         <span
