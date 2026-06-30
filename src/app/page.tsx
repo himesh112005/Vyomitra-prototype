@@ -12,6 +12,7 @@ import ChatBotPopup from '@/components/ui/ChatBotPopup'
 
 // Lazy-load heavy 3D sections
 const HeroSection = dynamic(() => import('@/components/hero/HeroSection'), { ssr: false })
+const SubtleAntigravity = dynamic(() => import('@/components/ui/SubtleAntigravity'), { ssr: false })
 const Architecture3D = dynamic(() => import('@/components/architecture/Architecture3D'), { ssr: false })
 
 export default function Home() {
@@ -23,6 +24,12 @@ export default function Home() {
       <main className="relative bg-[#000408] min-h-screen">
         {/* Subtle global dark background with noise */}
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+        
+        {/* Subtle Antigravity 3D Background */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none">
+          <SubtleAntigravity />
+        </div>
+        
         <div className="noise-overlay" />
 
         {/* 1. HERO */}
