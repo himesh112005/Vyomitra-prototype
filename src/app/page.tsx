@@ -12,7 +12,6 @@ import ChatBotPopup from '@/components/ui/ChatBotPopup'
 
 // Lazy-load heavy 3D sections
 const HeroSection = dynamic(() => import('@/components/hero/HeroSection'), { ssr: false })
-const HeroSpace3D = dynamic(() => import('@/components/hero/HeroSpace3D'), { ssr: false })
 const Architecture3D = dynamic(() => import('@/components/architecture/Architecture3D'), { ssr: false })
 
 export default function Home() {
@@ -21,13 +20,9 @@ export default function Home() {
       <CustomCursor />
       <MissionTimeline />
       
-      {/* GLOBAL 3D BACKGROUND */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <HeroSpace3D />
-      </div>
-
-      <main className="relative bg-transparent">
-        {/* Section divider utility */}
+      <main className="relative bg-[#000408] min-h-screen">
+        {/* Subtle global dark background with noise */}
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="noise-overlay" />
 
         {/* 1. HERO */}
