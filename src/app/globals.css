@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: var(--font-inter);
+  --color-background: #000408;
+  --color-foreground: #ffffff;
+}
+
+/* ═══════════════════════════════════
+   CUSTOM PROPERTIES
+═══════════════════════════════════ */
+:root {
+  --cyan: #22d3ee;
+  --blue: #3b82f6;
+  --purple: #a855f7;
+  --orange: #f97316;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --red: #ef4444;
+}
+
+/* ═══════════════════════════════════
+   BASE
+═══════════════════════════════════ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000408;
+  color: white;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Hide default scrollbar but keep functionality */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.6);
+}
+
+/* ═══════════════════════════════════
+   GLASSMORPHISM CARD
+═══════════════════════════════════ */
+.glass-card {
+  background: rgba(10, 15, 30, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+  border-color: rgba(34, 211, 238, 0.15);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.05);
+}
+
+/* ═══════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════ */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+/* ═══════════════════════════════════
+   UTILITY CLASSES
+═══════════════════════════════════ */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ═══════════════════════════════════
+   SECTION DIVIDERS
+═══════════════════════════════════ */
+.section-glow-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.2), transparent);
+}
