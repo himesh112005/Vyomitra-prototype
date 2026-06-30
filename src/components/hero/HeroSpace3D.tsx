@@ -5,8 +5,8 @@ import { Stars, OrbitControls, useDetectGPU } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 import { Vector2 } from 'three'
-import SolarOrrery from './SolarOrrery'
-import Asteroid from './Asteroid'
+import MassivePlanet from './MassivePlanet'
+import AsteroidBelt from './AsteroidBelt'
 import NetworkGlobe from './NetworkGlobe'
 import Galaxy from './Galaxy'
 
@@ -47,8 +47,8 @@ function SceneContent({ isLowEnd }: { isLowEnd: boolean }) {
       <ambientLight intensity={0.08} />
       <StarfieldWithParallax count={isLowEnd ? 1500 : 5000} />
       <Galaxy />
-      <SolarOrrery />
-      <Asteroid isLowEnd={isLowEnd} />
+      <MassivePlanet />
+      <AsteroidBelt />
       <NetworkGlobe />
       <OrbitControls
         enableZoom={false}

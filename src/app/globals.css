@@ -33,6 +33,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Hide default cursor sitewide */
+* {
+  cursor: none !important;
 }
 
 /* Hide default scrollbar but keep functionality */
@@ -51,61 +57,78 @@ body {
 }
 
 /* ═══════════════════════════════════
-   GLASSMORPHISM CARD
+   GLASSMORPHISM CARD — Stronger backdrop for complex 3D bg
 ═══════════════════════════════════ */
 .glass-card {
-  background: rgba(10, 15, 30, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(3, 6, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .glass-card:hover {
-  border-color: rgba(34, 211, 238, 0.15);
-  box-shadow: 0 0 40px rgba(34, 211, 238, 0.05);
+  border-color: rgba(34, 211, 238, 0.25);
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.08), 0 8px 32px rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════
+   TEXT READABILITY
+═══════════════════════════════════ */
+h1, h2, h3 {
+  text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 60px rgba(0,0,0,0.7);
+}
+
+p, span, li {
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+
+.font-mono {
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+}
+
+/* Section content gets dark overlay behind text for readability */
+.section-content-wrap {
+  position: relative;
+}
+
+.section-content-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -40px -20px;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0, 2, 10, 0.55) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 32px;
 }
 
 /* ═══════════════════════════════════
    ANIMATIONS
 ═══════════════════════════════════ */
 @keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
-  }
+  0%, 100% { box-shadow: 0 0 10px rgba(34, 211, 238, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(34, 211, 238, 0.6); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes scan-line {
-  0% {
-    top: -10%;
-  }
-  100% {
-    top: 110%;
-  }
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ═══════════════════════════════════
@@ -120,21 +143,28 @@ body {
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+  text-shadow: 0 0 30px rgba(34, 211, 238, 0.7), 0 0 60px rgba(34, 211, 238, 0.3);
 }
 
+.text-glow-white {
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Very subtle grid overlay — almost invisible against bright asteroid bg */
 .bg-grid {
-  background-image: linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
+/* Subtle film grain noise  */
 .noise-overlay::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   z-index: 9999;
 }
@@ -144,5 +174,24 @@ body {
 ═══════════════════════════════════ */
 .section-glow-divider {
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.2), transparent);
+  background: linear-gradient(to right, transparent, rgba(34, 211, 238, 0.25), rgba(59,130,246,0.15), transparent);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════
+   HERO SPECIFIC
+═══════════════════════════════════ */
+.hero-vignette {
+  background: radial-gradient(ellipse 70% 60% at 30% 50%, transparent 0%, rgba(0,2,12,0.5) 60%, rgba(0,2,12,0.85) 100%);
+}
+
+/* Scanline animation for HUD feel */
+.scanline-anim {
+  animation: scan-line 6s linear infinite;
+}
+
+/* Cinematic letter spacing for brand */
+.brand-text {
+  letter-spacing: 0.25em;
+  font-feature-settings: 'kern' 1, 'liga' 0;
 }
